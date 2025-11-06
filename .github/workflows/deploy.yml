@@ -40,11 +40,11 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd lambdas/resize
-          docker build -t 322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:test .
-          docker tag 322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:test 322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:latest
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:test
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:latest
-          echo "image=322609035570.dkr.ecr.us-east-1.amazonaws.com/resize-lambda:test" >> $GITHUB_OUTPUT
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
       - name: Check if Lambda function exists
         id: check-lambda-resize
@@ -110,12 +110,11 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd lambdas/greyscale
-          docker build -t 322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:test .
-          docker tag 322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:test 322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:latest
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:test
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:latest
-          echo "image=322609035570.dkr.ecr.us-east-1.amazonaws.com/greyscale-lambda:test" >> $GITHUB_OUTPUT
-
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
       - name: Check if Lambda function exists
         id: check-lambda-greyscale
         run: |
@@ -182,12 +181,11 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd lambdas/exif
-          docker build -t 322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:test .
-          docker tag 322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:test 322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:latest
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:test
-          docker push 322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:latest
-          echo "image=322609035570.dkr.ecr.us-east-1.amazonaws.com/exif-lambda:test" >> $GITHUB_OUTPUT
-
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
       - name: Check if Lambda function exists
         id: check-lambda-exif
